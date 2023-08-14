@@ -1,0 +1,14 @@
+The package requirements for this Python program are as follows:
+
+- `requests` for making HTTP requests
+- `json` for handling JSON data
+- `beautifulsoup4` (also known as `bs4`) for scraping HTML content
+- `transformers` for using the sentiment analysis pipeline
+- `googlesearch` for searching URLs using Google search
+- `datetime` for working with dates and times
+
+To install these packages, you can use the following command in your command line interface:
+
+```
+pip install requests beautifulsoup4 transformers google googlesearch-python datetime
+```
