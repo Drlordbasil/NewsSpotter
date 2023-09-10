@@ -64,7 +64,8 @@ class ArticleRecommendationEngine:
             soup = BeautifulSoup(response.content, 'html.parser')
             article_id = url.split('/')[-1]
             title = soup.find('title').get_text()
-            summary = soup.find('meta', attrs={'name': 'description'})['content']
+            summary = soup.find('meta', attrs={'name': 'description'})[
+                'content']
             publication_date = datetime.now().strftime("%Y-%m-%d")
             return Article(article_id, title, summary, publication_date)
         else:
@@ -77,12 +78,14 @@ class ArticleRecommendationEngine:
             article.sentiment = sentiment[0]['label']
 
     def fetch_user_preferences(self, user_id):
-        response = requests.get(f"https://api.example.com/users/{user_id}/preferences")
+        response = requests.get(
+            f"https://api.example.com/users/{user_id}/preferences")
         if response.status_code == 200:
             preferences = json.loads(response.content.decode('utf-8'))
             return preferences
         else:
-            raise Exception(f"Failed to fetch user preferences for user ID: {user_id}")
+            raise Exception(
+                f"Failed to fetch user preferences for user ID: {user_id}")
 
     def update_article_data(self, articles):
         for article in articles:
@@ -99,7 +102,8 @@ class ArticleRecommendationEngine:
     def update_article_database(self):
         articles_to_remove = []
         for article_id, article in self.article_data.items():
-            publication_date = datetime.strptime(article.publication_date, "%Y-%m-%d")
+            publication_date = datetime.strptime(
+                article.publication_date, "%Y-%m-%d")
             if (datetime.now() - publication_date).days >= 7:
                 articles_to_remove.append(article_id)
 
@@ -111,7 +115,8 @@ if __name__ == "__main__":
     recommendation_engine = ArticleRecommendationEngine()
     user_id = '123'
     keywords = ['technology', 'startup']
-    recommended_articles = recommendation_engine.run_autonomous_program(user_id, keywords)
+    recommended_articles = recommendation_engine.run_autonomous_program(
+        user_id, keywords)
     for article in recommended_articles:
         print(f"Article ID: {article.article_id}")
         print(f"Title: {article.title}")
