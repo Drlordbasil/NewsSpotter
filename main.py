@@ -124,3 +124,5 @@ if __name__ == "__main__":
         print(f"Publication Date: {article.publication_date}")
         print(f"Sentiment: {article.sentiment}")
         print("---------------------")
+
+# Optimized Python script
